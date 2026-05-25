@@ -1,0 +1,11 @@
+.movies{
+    background-color: #131313;
+    padding-bottom: 170px;
+    min-height:600px;
+}
+.movies__list{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:30px;
+}

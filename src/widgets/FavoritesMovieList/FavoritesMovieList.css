@@ -1,0 +1,11 @@
+.favorites {
+    padding: 201px 0;
+    background-color: #131313;
+}
+
+.favorites__movie__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+

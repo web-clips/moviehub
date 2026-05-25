@@ -1,0 +1,142 @@
+.movie__card {
+    width: 255px;
+    height: 358px;
+    border-radius: 40px;
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.movie__card.favorite{
+    outline: 1px solid #BD00CE;
+    box-shadow: 0 0 10px 1px #BD00CE;
+}
+.movie__card:hover .movie__card__top {
+    top: 0;
+}
+
+.movie__card:hover .movie__card__description {
+    bottom: 40px;
+}
+
+.movie__card:hover .movie__card__to__favorites {
+    bottom: 23px;
+}
+
+.movie__card:hover .movie__card__play {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.movie__card__img {
+    width: 100%;
+    height: 100%;
+}
+
+.movie__card__img img {
+    width: 100%;
+    height: 100%;
+}
+
+.movie__card__top {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 20px 20px 0;
+    justify-content: space-between;
+    transition: .5s;
+}
+
+.movie__card__top p {
+    padding: 9px 17px;
+    background: radial-gradient(circle, #7C00CE 100%, #ED2A2A 100%);
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.movie__card__top span {
+    width: 35px;
+    height: 35px;
+    background: radial-gradient(circle, #BD00CE, #ED2A2A);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.movie__card__description {
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+    transition: .5s;
+}
+.movie__card::before{
+    content:'';
+    display: block;
+    position: absolute;
+    bottom:-100%;
+    right:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .9), rgba(255, 255, 255, 0));
+    transition: .5s;
+}
+.movie__card:hover::before{
+    bottom:0;
+}
+.movie__card__description h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.movie__card__description span {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -3%;
+    color: #888888;
+}
+
+.movie__card__to__favorites {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    font-size: 12px;
+    position: absolute;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.movie__card__to__favorites:hover {
+    color: #BD00CE;
+}
+
+.movie__card__play {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(-20deg, #BD00CE, #ED2A2A);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transform: scale(0);
+    opacity: 0;
+    transition: .5s;
+    cursor: pointer;
+    z-index: 10;
+}

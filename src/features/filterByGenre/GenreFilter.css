@@ -1,0 +1,33 @@
+.genre {
+    display: flex;
+    justify-content: center;
+    background-color: #131313;
+    padding: 66px 0 153px;
+}
+
+.genre__filter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.genre__btn {
+    padding: 15px 24px;
+    background: #1D1D1D;
+    border: 1px solid #2C2C2C;
+    border-radius: 16px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.genre__btn:hover {
+    box-shadow: 0 4px 20px -3px #B33F9E;
+}
+
+.genre__btn.active {
+    background: linear-gradient(90deg, #FF7373 0%, #C10EBE 58%, #5F20FF 96%);
+    box-shadow: 0 4px 20px -3px #B33F9E;
+}
