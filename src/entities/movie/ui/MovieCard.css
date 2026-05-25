@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .movie__card.favorite{
     outline: 1px solid #BD00CE;
     box-shadow: 0 0 10px 1px #BD00CE;

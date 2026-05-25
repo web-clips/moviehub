@@ -8,4 +8,14 @@
     align-items: center;
     flex-wrap: wrap;
     gap:30px;
+} 
+@media screen and (max-width:768px){
+    .movies .container{
+        max-width:540px;
+    }
+}
+@media screen and (max-width:550px){
+    .movies .container{
+        max-width:255px;
+    }
 }

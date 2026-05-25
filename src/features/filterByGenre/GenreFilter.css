@@ -31,3 +31,30 @@
     background: linear-gradient(90deg, #FF7373 0%, #C10EBE 58%, #5F20FF 96%);
     box-shadow: 0 4px 20px -3px #B33F9E;
 }
+
+@media screen and (max-width:768px) {
+    .genre {
+        display: flex;
+        gap: 24px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        white-space: nowrap;
+
+        padding-bottom: 12px;
+
+        scrollbar-width: none;
+        max-width: 420px;
+        margin: 0 auto;
+        justify-content: start;
+    }
+
+    .genre::-webkit-scrollbar {
+        display: none;
+    }
+
+    .genre button {
+        flex: 0 0 auto;
+    }
+}
