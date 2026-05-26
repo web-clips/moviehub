@@ -1,4 +1,4 @@
-import { toggleFavorite } from "@/entities/movie/model/movieSlice";
+import { toggleFavorite, toggleFavoriteLocal } from "@/entities/movie/model/movieSlice";
 import { useDispatch } from "react-redux"
 
 
@@ -7,9 +7,8 @@ export const FavoriteButton = ({ movie }) => {
     const dispatch = useDispatch();
 
     const handleFavorite = () => {
-        dispatch(
-            toggleFavorite(movie)
-        )
+        dispatch(toggleFavoriteLocal(movie.id))
+        dispatch(toggleFavorite(movie))
     }
 
 

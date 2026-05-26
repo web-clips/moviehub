@@ -52,7 +52,14 @@ const movieSlice = createSlice({
         setSearchValue: (state, action) => {
             state.searchValue = action.payload
         },
-
+        toggleFavoriteLocal: (state, action) => {
+            const movie = state.movies.find(
+                movie => movie.id === action.payload
+            )
+            if (movie) {
+                movie.isFavorite = !movie.isFavorite
+            }
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -68,23 +75,13 @@ const movieSlice = createSlice({
                 state.isLoading = false;
                 state.error = action.payload;
             })
-            .addCase(toggleFavorite.fulfilled, (state, action) => {
-                const updatedMovie = action.payload
-
-                const movie = state.movies.find(
-                    movie => movie.id === updatedMovie.id
-                )
-
-                if (movie) {
-                    movie.isFavorite = updatedMovie.isFavorite
-                }
-            })
     }
 })
 
 export const {
     setGenreFilter,
     setSearchValue,
+    toggleFavoriteLocal
 } = movieSlice.actions;
 
 export const movieReducer = movieSlice.reducer;
