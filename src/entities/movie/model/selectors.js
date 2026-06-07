@@ -7,6 +7,9 @@ export const selectMovies = (state) =>
 export const selectSearchValue = (state) =>
     state.movie.searchValue
 
+export const selectMovieDetails = (state) =>
+    state.movie.currentMovie
+
 export const selectFavorites = createSelector(
     [selectMovies],
     (movies) => movies.filter(
@@ -35,10 +38,16 @@ export const selectFilteredMovies = createSelector(
     }
 )
 
-export const selectLoading = (state) => 
+export const selectLoading = (state) =>
     state.movie.isLoading;
 
 
-export const selectError = (state) => 
+export const selectError = (state) =>
     state.movie.error;
 
+
+export const selectCurrentMovie = (state) =>
+    state.movie.currentMovie
+
+export const selectMovieLoading = (state) =>
+    state.movie.isMovieLoading

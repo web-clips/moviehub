@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectError, selectFilteredMovies, selectLoading } from "@/entities/movie/model/selectors";
 import { useEffect } from "react";
 import { fetchMovies } from "@/entities/movie/model/movieSlice";
+import loader from '@/assets/circles-loader-svgrepo-com.svg'
 
 
 
@@ -12,7 +13,7 @@ export const MovieList = () => {
     const movies = useSelector(
         selectFilteredMovies
     )
-   
+
     const isLoading = useSelector(selectLoading);
     const error = useSelector(selectError);
     useEffect(() => {
@@ -20,7 +21,7 @@ export const MovieList = () => {
     }, [dispatch])
 
     if (isLoading) {
-        return <h2>Загрузка фильмов ...</h2>
+        return <div className="movie__loader"><img src={loader} alt="" /></div>
     }
     if (error) {
         return <h2>{error}</h2>

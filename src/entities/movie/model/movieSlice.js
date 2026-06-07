@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { getMovies, updateMovieFavorite } from "../movieApi/movieApi"
+import { getMovieDetails, getMovies, updateMovieFavorite } from "../movieApi/movieApi"
 
 export const fetchMovies = createAsyncThunk(
     "movie/fetchMovies",
@@ -15,6 +15,18 @@ export const fetchMovies = createAsyncThunk(
         }
     }
 )
+
+export const fetchMovieDetails = createAsyncThunk(
+    "movie/fetchMovieDetails",
+    async (id, thunkAPI) => {
+        try {
+            return await getMovieDetails(id)
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message)
+        }
+    }
+)
+
 export const toggleFavorite = createAsyncThunk(
     "movie/toggleFavorite",
 
@@ -39,7 +51,10 @@ const initialState = {
     genreFilter: "Все",
     searchValue: "",
     isLoading: false,
-    error: null
+    error: null,
+    currentMovie: null,
+    isMovieLoading: false,
+    movieError: null
 }
 
 const movieSlice = createSlice({
@@ -59,6 +74,14 @@ const movieSlice = createSlice({
             if (movie) {
                 movie.isFavorite = !movie.isFavorite
             }
+            if (state.currentMovie && state.currentMovie.id === action.payload) {
+                state.currentMovie.isFavorite = !state.currentMovie.isFavorite
+            }
+        },
+        clearCurrentMovie:(state)=>{
+            state.currentMovie = null
+            state.movieError = null
+            state.isMovieLoading = false
         }
     },
     extraReducers: (builder) => {
@@ -75,10 +98,25 @@ const movieSlice = createSlice({
                 state.isLoading = false;
                 state.error = action.payload;
             })
+            .addCase(fetchMovieDetails.pending, (state) => {
+                state.isMovieLoading = true
+                state.movieError = null
+                state.currentMovie = null
+            })
+            .addCase(fetchMovieDetails.fulfilled, (state, action) => {
+                state.isMovieLoading = false;
+                state.currentMovie = action.payload;
+            })
+            .addCase(fetchMovieDetails.rejected, (state, action) => {
+                state.isMovieLoading = false;
+                state.movieError = action.payload;
+                state.currentMovie = null;
+            })
     }
 })
 
 export const {
+    clearCurrentMovie,
     setGenreFilter,
     setSearchValue,
     toggleFavoriteLocal
