@@ -131,10 +131,6 @@
     cursor: pointer;
 }
 
-.movie__details .movie__card__to__favorites:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(189, 0, 206, 0.18);
-}
 
 @media screen and (max-width: 900px) {
     .movie__details__wrap {
